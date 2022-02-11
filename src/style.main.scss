@@ -3,98 +3,180 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-areas: 
+  'header'
+  'main'
+  'footer';
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  background-color: rgb(32, 32, 32);
+}
 main {
   display: grid;
-  grid-template:
-  "nav " minmax(100px ,auto)
-  "main " minmax(100px ,auto)
-  "head " minmax(100px ,auto)
-   / 1fr 
-   ;
+  grid-template-areas: 
+  'nav main'
+  'aside main';
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: min-content 1fr;
 }
-
-nav {
-  grid-area: nav;
-  background-color: rgb(255, 196, 0);
-}
-
 header {
-  grid-area: head;
-  background-color: rgb(10, 235, 10);
-}
-
-section {
-  grid-area: main;
-  background-color: gray;
-}
-
-nav {
-  // height: auto;
-  resize: none;
-}
-
-header {
-  // height: auto;
-  resize: none;
-}
-
-section {
-  resize: none;
-  // height: auto;
-}
-
-
-@media (min-width:976px) {
-  main {
-    display: grid;
-    grid-template:
-    "nav main" min-content
-    "head main" 1fr
-     / 250px 1fr
-     ;
-  }
-  nav {
-    height: 250px;
-    grid-area: nav;
-    border: 3px solid blue;
-    overflow: auto;
-    resize: vertical;
-    min-height: 100px;
-    max-height: auto;
-    background-color: rgb(255, 196, 0);
-  }
+  background-color: rgb(0, 38, 255);
+  min-height: 50px;
+  grid-area: header;
   
-  header {
-    grid-area: head;
-    background-color: rgb(10, 235, 10);
-    min-height: 100px;
-    max-height: auto;
-    height: 250px;
-    overflow: auto;
-    resize: vertical;
-  }
-  
-  section {
-    min-height: min-content;
-    max-height: calc(100vh - 2*30px);
-    grid-area: main;
-    background-color: gray;
-    overflow: auto;
-    resize: vertical;
-    height: 800px;
-  }
-}
-
-heade, footer {
-  height: 30px;
-  background-color: rgb(36, 35, 35);
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  min-height: 100vh;
 }
 footer {
-  margin-top: auto;
+  background-color: rgb(255, 0, 0);
+  min-height: 50px;
+  grid-area: footer;
 }
+
+.resizable {
+  resize: vertical;
+  overflow: auto;
+}
+nav {
+  background-color: rgb(0, 238, 255);
+  min-height: 50px;
+  max-height: 1000px;
+  grid-area: nav;
+  height: 50px;
+}
+aside {
+  background-color: rgb(255, 0, 200);
+  min-height: 50px;
+  max-height: 1000px;
+  height: 150px;
+  grid-area: aside;
+}
+section {
+  background-color: rgb(30, 255, 0);
+  min-height: 50px;
+  grid-area: main;
+  height: 500px;
+}
+
+@media screen and (max-width: 976px) {
+  .resizable {
+    resize: none;
+    overflow: hidden;
+  }
+  main {
+    grid-template-areas: 
+    'nav'
+    'main'
+    'aside';
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3,auto);
+  }
+  nav {
+    height: auto;
+  }
+  aside {
+    height: auto;
+  }
+  section {
+    height: auto;
+  }
+}
+
+
+
+
+
+
+
+
+
+// main {
+//   display: grid;
+//   grid-template:
+//   "nav " minmax(100px ,auto)
+//   "main " minmax(100px ,auto)
+//   "head " minmax(100px ,auto)
+//    / 1fr 
+//    ;
+// }
+
+// nav {
+//   grid-area: nav;
+//   background-color: rgb(255, 196, 0);
+// }
+
+// aside {
+//   grid-area: head;
+//   background-color: rgb(10, 235, 10);
+// }
+
+// section {
+//   grid-area: main;
+//   background-color: gray;
+// }
+
+// nav {
+//   resize: none;
+// }
+
+// aside {
+//   resize: none;
+// }
+
+// section {
+//   resize: none;
+// }
+
+// @media (min-width:976px) {
+//   main {
+//     display: grid;
+//     grid-template:
+//     "nav main" min-content
+//     "head main" 1fr
+//      / 250px 1fr
+//      ;
+//   }
+//   nav {
+//     height: 250px;
+//     grid-area: nav;
+//     border: 3px solid blue;
+//     overflow: auto;
+//     resize: vertical;
+//     min-height: 100px;
+//     max-height: auto;
+//     background-color: rgb(255, 196, 0);
+//   }
+//   aside {
+//     grid-area: head;
+//     background-color: rgb(10, 235, 10);
+//     min-height: 100px;
+//     max-height: auto;
+//     height: 250px;
+//     overflow: auto;
+//     resize: vertical;
+//   }
+//   section {
+//     min-height: min-content;
+//     max-height: auto;
+//     // max-height: calc(100vh - 2*30px);
+//     grid-area: main;
+//     background-color: gray;
+//     overflow: auto;
+//     resize: vertical;
+//     height: 800px;
+//   }
+// }
+// header, footer {
+//   height: 30px;
+//   background-color: rgb(36, 35, 35);
+// }
+// .wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   overflow: hidden;
+//   min-height: 100vh;
+// }
+// footer {
+//   margin-top: auto;
+// }

@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  display: grid;
+  grid-template:
+  "nav " minmax(100px ,auto)
+  "main " minmax(100px ,auto)
+  "head " minmax(100px ,auto)
+   / 1fr 
+   ;
+}
+
+nav {
+  grid-area: nav;
+  background-color: rgb(255, 196, 0);
+}
+
+header {
+  grid-area: head;
+  background-color: rgb(10, 235, 10);
+}
+
+section {
+  grid-area: main;
+  background-color: gray;
+}
+
+nav {
+  // height: auto;
+  resize: none;
+}
+
+header {
+  // height: auto;
+  resize: none;
+}
+
+section {
+  resize: none;
+  // height: auto;
+}
+
+
+@media (min-width:976px) {
+  main {
+    display: grid;
+    grid-template:
+    "nav main" min-content
+    "head main" 1fr
+     / 250px 1fr
+     ;
+  }
+  nav {
+    height: 250px;
+    grid-area: nav;
+    border: 3px solid blue;
+    overflow: auto;
+    resize: vertical;
+    min-height: 100px;
+    max-height: auto;
+    background-color: rgb(255, 196, 0);
+  }
+  
+  header {
+    grid-area: head;
+    background-color: rgb(10, 235, 10);
+    min-height: 100px;
+    max-height: auto;
+    height: 250px;
+    overflow: auto;
+    resize: vertical;
+  }
+  
+  section {
+    min-height: min-content;
+    max-height: calc(100vh - 2*30px);
+    grid-area: main;
+    background-color: gray;
+    overflow: auto;
+    resize: vertical;
+    height: 800px;
+  }
+}
+
+heade, footer {
+  height: 30px;
+  background-color: rgb(36, 35, 35);
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 100vh;
+}
+footer {
+  margin-top: auto;
+}
